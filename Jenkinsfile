@@ -7,7 +7,7 @@ pipeline {
 stages { 
      
   stage('Preparation') { 
-   steps {
+     steps {
 // for display purpose
 
       // Get some code from a GitHub repository
@@ -22,7 +22,7 @@ stages {
      }
    }
 
-   stage('Build') {
+  stage('Build') {
        steps {
        // Run the maven build
 
@@ -35,7 +35,7 @@ stages {
 //}
    }
  
-  stage('Unit Test Results') {
+  stage('Results') {
       steps {
       junit '**/target/surefire-reports/TEST-*.xml'
       archiveArtifacts 'target/*.war'
