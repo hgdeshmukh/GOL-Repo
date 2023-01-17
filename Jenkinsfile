@@ -7,7 +7,7 @@ pipeline {
 stages { 
      
   stage('Preparation') { 
-     steps {
+      steps {
 // for display purpose
 
       // Get some code from a GitHub repository
@@ -23,7 +23,7 @@ stages {
    }
 
   stage('Build') {
-       steps {
+      steps {
        // Run the maven build
 
       //if (isUnix()) {
@@ -40,7 +40,7 @@ stages {
       junit '**/target/surefire-reports/TEST-*.xml'
       archiveArtifacts 'target/*.war'
       }
- }
+  }
   stage('Sonarqube') {
     environment {
         scannerHome = tool 'sonarqube'
