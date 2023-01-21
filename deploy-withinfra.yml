@@ -22,14 +22,14 @@
       key_name: webserver-key
       image: ami-0cca134ec43cf708f
       region: ap-south-1
-      group: default
+      group: launch-wizard-12
       count: 1
       wait: yes
       wait_timeout: 500
       instance_tags: 
           name: webserver
       assign_public_ip: yes
-      vpc_subnet_id: default
+      vpc_subnet_id: subnet-03049c2c7ce5b46eb
     register: ec2  
   - name: Add Instance IP into in-memory inventory file not into hosts file
     add_host: 
@@ -103,7 +103,7 @@
     when: stat_result.stat.exists == True
   - name: Deploy War File
     get_url:
-       url: http://3.110.210.146:8081/service/local/artifact/maven/redirect?r=maven-releases&g=com.wakaleo.gameoflife&a=gameoflife&p=war&v=LATEST
+       url: http://65.1.84.153:8081/service/rest/v1/search/assets/download?sort=version&repository=maven-releases&maven.groupId=com.wakaleo.gameoflife&maven.artifactId=gameoflife&maven.baseVersion=artifactversion&maven.extension=war
        dest: /usr/share/tomcat/webapps/gameoflife.war
   - name: Start Tomcat
     service: name=tomcat state=started
