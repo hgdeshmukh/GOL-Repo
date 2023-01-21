@@ -6,13 +6,13 @@ pipeline {
     }
 stages { 
      
-  stage('Preparation') { 
-      steps {
-// for display purpose
+ stage('Preparation') { 
+     steps {
+// for display purposes
 
       // Get some code from a GitHub repository
 
-     git 'https://github.com/hgdeshmukh/GOL-Repo.git'
+      git 'https://github.com/hgdeshmukh/hello-world-servlet.git'
 
       // Get the Maven tool.
      
@@ -22,8 +22,8 @@ stages {
      }
    }
 
-  stage('Build') {
-      steps {
+   stage('Build') {
+       steps {
        // Run the maven build
 
       //if (isUnix()) {
@@ -34,7 +34,6 @@ stages {
        }
 //}
    }
- 
   stage('Results') {
       steps {
       junit '**/target/surefire-reports/TEST-*.xml'
